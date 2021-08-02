@@ -35,8 +35,7 @@ class Search:
                         break
                 listURLS.append(new_word)
                 new_word = ""
-        for i in listURLS:
-            print(i)
+        return listURLS
 
 
     def searchAnswer(self):
@@ -46,9 +45,10 @@ class Search:
         googleResponse = rq.get(self.googleURL, headers=headers, allow_redirects=True)
         if googleResponse.status_code == 200:
 
-            print(googleResponse.text)
-            self.getHTTP(googleResponse.text)
-
+            listURLS = list(self.getHTTP(googleResponse.text))
+            listURLS = listURLS[4:]
+            for i in listURLS:
+                print(i)
             print("Enter to Google site!")
         elif googleResponse.status_code == 404:
             print("Fail connect to Google site!")
