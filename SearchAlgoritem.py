@@ -62,4 +62,4 @@ class Search:
 
 
     def getAnswer(self):
-        return answer
+        pass
