@@ -40,6 +40,8 @@ class Search:
             siteResponse = rq.get(site, headers=headers, allow_redirects=True)
             if siteResponse.status_code == 200:
                 text = siteResponse.text.split()
+                for word in text:
+
             elif siteResponse.status_code == 404:
                 print("Fail connect to Google site!")
 
