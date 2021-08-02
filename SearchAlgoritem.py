@@ -35,7 +35,7 @@ class Search:
                         break
                 listURLS.append(new_word)
                 new_word = ""
-
+        #SAREL YOU ARE MORONG
         return listURLS
 
 
