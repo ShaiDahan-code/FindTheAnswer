@@ -12,7 +12,7 @@ class Search:
     ansewr = ""
     googleURL = ""
 
-    def __init__(self,question, answer_1,answer_2,answer_3,answer_4,):
+    def _init_(self,question, answer_1,answer_2,answer_3,answer_4,):
         self.googleURL = "https://www.google.com/search?q=" + question
         self.poosible_answer_1 = answer_1
         self.poosible_answer_2 = answer_2
