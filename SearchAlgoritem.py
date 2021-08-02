@@ -2,15 +2,11 @@ import requests as rq
 from urllib.parse import urlencode,urlparse,parse_qs
 from lxml.html import fromstring
 
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36'
+}
 #shai is a gay
 class Search:
-    question = ""
-    poosible_answer_1 = ""
-    poosible_answer_2 = ""
-    poosible_answer_3 = ""
-    poosible_answer_4 = ""
-    ansewr = ""
-    googleURL = ""
 
     def __init__(self,question, answer_1, answer_2, answer_3, answer_4,):
         self.googleURL = "https://www.google.com/search?q=" + question
@@ -19,6 +15,7 @@ class Search:
         self.poosible_answer_3 = answer_3
         self.poosible_answer_4 = answer_4
         self.question = question
+        self.listURLS = []
         print("Init suuces!")
 
 
@@ -38,19 +35,20 @@ class Search:
         #SAREL YOU ARE MORONG
         return listURLS
 
+    def countTheAnswer(self):
+        for site in self.listURLS:
+            siteResponse = rq.get(site, headers=headers, allow_redirects=True)
+            if siteResponse.status_code == 200:
+                text = siteResponse.text.split()
+            elif siteResponse.status_code == 404:
+                print("Fail connect to Google site!")
+
 
     def searchAnswer(self):
-        headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36'
-        }
         googleResponse = rq.get(self.googleURL, headers=headers, allow_redirects=True)
         if googleResponse.status_code == 200:
-
             listURLS = list(self.getHTTP(googleResponse.text))
-            listURLS = listURLS[4:]
-            for i in listURLS:
-                print(i)
-            print("Enter to Google site!")
+            listURLS = listURLS[4:10]
         elif googleResponse.status_code == 404:
             print("Fail connect to Google site!")
 
