@@ -2,7 +2,7 @@ import requests as rq
 from urllib.parse import urlencode,urlparse,parse_qs
 from lxml.html import fromstring
 
-
+#shai is a gay
 class Search:
     question = ""
     poosible_answer_1 = ""
