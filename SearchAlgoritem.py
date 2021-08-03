@@ -70,3 +70,4 @@ class Search:
                 key = i
             i+=1
         print(self.poosible_answer[key][0])
+        return self.poosible_answer[key][0]
