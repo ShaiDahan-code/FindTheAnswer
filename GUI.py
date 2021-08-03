@@ -6,8 +6,8 @@ layout = [  [sg.Text('Question:                          '), sg.Input(key='Quest
             [sg.Text('Possible answer number 2: '), sg.Input(key='Answer2')],
             [sg.Text('Possible answer number 3: '), sg.Input(key='Answer3')],
             [sg.Text('Possible answer number 4: '), sg.Input(key='Answer4')],
-            [sg.Text("Answer is: "), sg.Text(size=(40, 1), key='-OUTPUT-')],
-            [sg.Button('Search Answer'), sg.Button('Clear'),sg.Button('Quit')]
+            [sg.Text("Answer is: "), sg.Text(size=(70, 1), key='-OUTPUT-')],
+            [sg.Button('Search Answer'), sg.Button('Clear'),sg.Button('Quit'), sg.Text("Create By: Sarel Alush & Shai Dahan")]
 ]
 window = sg.Window('Find The Answer', layout)
 while True:
@@ -27,12 +27,8 @@ while True:
         p1 = SearchAlgoritem.Search(values['Question'], values['Answer1'], values['Answer2'], values['Answer3'], values['Answer4'])
         p1.searchAnswer()
         p1.countTheAnswer()
-        window['-OUTPUT-'].update(f"The most poosible answer is: {p1.getAnswer()}")
+        window['-OUTPUT-'].update(f"The most possible answer is: {p1.getAnswer()}")
 
 
 window.close()
 
-# p1 = sa.Search("הבן אדם המבוגר בעולם","אביחי עזיז","ז'אן לואיז קלמן","שראל אלוש","אסף בן שבת")
-# p1.searchAnswer()
-# p1.countTheAnswer()
-# p1.getAnswer()

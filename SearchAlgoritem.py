@@ -36,16 +36,11 @@ class Search:
         for site in self.listURLS:
             siteResponse = rq.get(site, headers=headers, allow_redirects=True)
             if siteResponse.status_code == 200:
-                text = siteResponse.text.split()
-                for word in text:
-                    if(word in self.poosible_answer[0][0]):
-                        self.poosible_answer[0][1] += 1
-                    elif(word in self.poosible_answer[1][0]):
-                        self.poosible_answer[1][1] += 1
-                    elif (word in self.poosible_answer[2][0]):
-                        self.poosible_answer[2][1] += 1
-                    elif (word in self.poosible_answer[3][0]):
-                        self.poosible_answer[3][1] += 1
+                text = siteResponse.text
+                self.poosible_answer[0][1] += text.count(self.poosible_answer[0][0])
+                self.poosible_answer[1][1] += text.count(self.poosible_answer[1][0])
+                self.poosible_answer[2][1] += text.count(self.poosible_answer[2][0])
+                self.poosible_answer[3][1] += text.count(self.poosible_answer[3][0])
             elif siteResponse.status_code == 404:
                 print("Fail connect to Google site!")
 
@@ -54,7 +49,7 @@ class Search:
         googleResponse = rq.get(self.googleURL, headers=headers, allow_redirects=True)
         if googleResponse.status_code == 200:
             self.listURLS = list(self.getHTTP(googleResponse.text))
-            self.listURLS = self.listURLS[4:6]
+            self.listURLS = self.listURLS[4:7]
         elif googleResponse.status_code == 404:
             print("Fail connect to Google site!")
 
@@ -69,5 +64,4 @@ class Search:
                 biggest = countAnswer[1]
                 key = i
             i+=1
-        print(self.poosible_answer[key][0])
         return self.poosible_answer[key][0]
