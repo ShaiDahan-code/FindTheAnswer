@@ -58,10 +58,26 @@ class Search:
         biggest = self.poosible_answer[0][1]
         key = 0
         i = 0
+        listPossibleAnswers =[]
         for countAnswer in self.poosible_answer:
             print(countAnswer[1])
             if countAnswer[1] > biggest:
                 biggest = countAnswer[1]
                 key = i
             i+=1
-        return self.poosible_answer[key][0]
+        for countAnswer in self.poosible_answer:
+            if biggest == countAnswer[1]:
+                listPossibleAnswers.append(countAnswer)
+
+        return listPossibleAnswers
+
+
+    def getPercent(self):
+        rightAnswer = self.getAnswer()[0][1]
+        print(rightAnswer)
+        sum = 0
+        for i in self.poosible_answer:
+            sum += i[1]
+        if sum ==0:
+            return 0
+        return (rightAnswer/sum)*100
