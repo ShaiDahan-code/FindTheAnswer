@@ -26,7 +26,13 @@ while True:
 
     if event == 'Upload Image':
         p2 = ImageToText.ImageToTextConvert()
-
+        lst = p2.sendButtonFunction()
+        window['Question'].update(lst[0])
+        window['Answer1'].update(lst[1])
+        window['Answer2'].update(lst[2])
+        window['Answer3'].update(lst[3])
+        window['Answer4'].update(lst[4])
+        print(lst)
 
 
     if event == 'Search Answer':
