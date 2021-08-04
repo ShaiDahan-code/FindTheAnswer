@@ -20,7 +20,7 @@ while True:
         window['Answer1'].update("")
         window['Answer2'].update("")
         window['Answer3'].update("")
-        window['Answer4'].update("" o)
+        window['Answer4'].update("")
         window['-OUTPUT-'].update("")
 
     if event == 'Search Answer':

@@ -10,7 +10,7 @@ class Search:
 
     def __init__(self, question, answer_1, answer_2, answer_3, answer_4):
         self.googleURL = "https://www.google.com/search?q=" + question
-        self.poosible_answer = [[answer_1,0],[answer_2,0],[answer_3,0],[answer_4,0]]
+        self.poosible_answer = [[answer_1, 0], [answer_2, 0], [answer_3, 0], [answer_4, 0]]
         self.question = question
         self.listURLS = []
         print("Init suuces!")
@@ -29,7 +29,6 @@ class Search:
                         break
                 listURLS.append(new_word)
                 new_word = ""
-        #SAREL YOU ARE MORONG
         return listURLS
 
     def countTheAnswer(self):
